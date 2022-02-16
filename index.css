@@ -1,0 +1,131 @@
+@import url("./vendor/normalize.css");
+
+:root {
+  --white-color: rgba(255, 255 ,255, .8);
+  --grey-color: rgba(0, 0 ,0, .5);
+  --shadow: 3px 3px 0 rgba(0, 0 ,0, .3);
+}
+
+body {
+  background-color: tomato;
+  text-align: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  flex-direction: column;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0;
+}
+
+.digits {
+  color: var(--white-color);
+  font-size: 144pt;
+  cursor: default;
+}
+
+#digits-minutes::after {
+  content: ':';
+}
+
+.content__controls-container {
+  display: flex;
+  justify-content: center;
+}
+
+.control {
+  background-color: var(--white-color);
+  color: var(--grey-color);
+  font-size: 18pt;
+  font-weight: 700;
+  border: 0;
+  cursor: pointer;
+  transition: ease-in .1s;
+  margin-top: 20px;
+}
+
+.control:hover {
+  box-shadow: var(--shadow);
+  background-color: white;
+}
+
+.control:active {
+  box-shadow: inset var(--shadow);
+  background-color: var(--white-color);
+}
+
+.start-stop {
+  width: 300px;
+  height: 40px;
+  border-radius: 25px;
+  padding: 0;
+  margin: 0 0 0 50px;
+}
+
+#reset {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin: 0 0 0 10px;
+}
+
+#settings {
+  background-color: var(--white-color);
+  margin: 20px auto;
+  padding: 10px;
+  border-radius: 25px;
+  color: var(--grey-color);
+  display: flex;
+  min-width: 280px;
+  justify-content: center;
+}
+
+.settings__container {
+  margin: 0 10px 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.settings__title {
+  font-weight: 600;
+  align-self: center;
+  margin: 0 0 5px 0;
+  cursor: default;
+}
+
+.input {
+  border: 0;
+  background-color: var(--grey-color);
+  width: 50px;
+  height: 20px;
+  text-align: center;
+  color: var(--white-color);
+  border-radius: 20px;
+  margin: 5px;
+  transition: ease-in .3s;
+  border: solid 2px transparent;
+}
+
+.input:focus {
+  background-color: rgba(0, 0 ,0, .7);
+  outline: 0;
+  border: solid 2px tomato;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

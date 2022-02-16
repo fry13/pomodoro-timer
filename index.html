@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Pomodoro</title>
+  </head>
+  <body>
+    <div class="content">
+      <div class="content__timer-container"><span class="digits" id="digits-minutes">00</span><span class="digits" id="digits-seconds">00</span></div>
+      <div class="content__controls-container">
+        <button class="start-stop control" id="ctrl">START</button>
+        <button class="control hide" id="reset"> <img src="./img/reset.svg" alt=""></button>
+      </div>
+      <audio id="beeper" src="" type="audio/mp3" preload="metadata">Ваш браузер не поддерживает встроенное аудио. Вы не услышите сигнал.        </audio>
+    </div>
+    <form id="settings" name="settings">
+      <div class="settings__container"><span class="settings__title">Work</span>
+        <label>min
+          <input class="input" id="inputs_work-min" type="number" value="25">
+        </label><br>
+        <label>sec
+          <input class="input" id="inputs_work-sec" type="number" value="0">
+        </label>
+      </div>
+      <div class="settings__container"><span class="settings__title">Short break</span>
+        <label>min
+          <input class="input" id="inputs_break-min" type="number" value="5">
+        </label><br>
+        <label>sec
+          <input class="input" id="inputs_break-sec" type="number" value="0">
+        </label>
+      </div>
+      <div class="settings__container"><span class="settings__title">Long break</span>
+        <label>min
+          <input class="input" id="inputs_longBreak-min" type="number" value="5">
+        </label><br>
+        <label>sec
+          <input class="input" id="inputs_longBreak-sec" type="number" value="0">
+        </label>
+      </div>
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./index.js"> </script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="./index.css")
+    title Pomodoro
+  body
+    .content
+      .content__timer-container
+        span#digits-minutes.digits 00
+        span#digits-seconds.digits 00
+      .content__controls-container
+        button#ctrl.start-stop.control START
+        button#reset.control.hide 
+          img(src="./img/reset.svg", alt="")          
+      audio#beeper(src="" type="audio/mp3" preload="metadata") Ваш браузер не поддерживает встроенное аудио. Вы не услышите сигнал.        
+    
+    form#settings(name="settings")
+      .settings__container
+        span.settings__title Work
+        label min
+          input#inputs_work-min.input(type="number" value="25")
+        br
+        label sec
+          input#inputs_work-sec.input(type="number" value="0")
+      .settings__container
+        span.settings__title Short break
+        label min
+          input#inputs_break-min.input(type="number" value="5")
+        br
+        label sec
+          input#inputs_break-sec.input(type="number" value="0")
+      .settings__container
+        span.settings__title Long break
+        label min
+          input#inputs_longBreak-min.input(type="number" value="5")
+        br
+        label sec
+          input#inputs_longBreak-sec.input(type="number" value="0")
+
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js")
+    script(src="./index.js") 
+    
