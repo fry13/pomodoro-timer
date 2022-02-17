@@ -5,6 +5,9 @@ let intervalVar;
 let minutes = 0;
 let seconds = 0;
 let timer_seconds = 0;
+let params = {};
+
+$('#beeper')[0].volume = 0.5;
 
 function audio() {
   var audio = $('#beeper');
@@ -33,6 +36,12 @@ function renderDigits(seconds) {
   $('#digits-seconds').text(digits.seconds);
 }
 
+function setParams() {
+  params.time_work = $('#inputs_work-min').val() * 60 + $('#inputs_work-sec').val() * 1;
+  params.time_break = $('#inputs_break-min').val() * 60 + $('#inputs_break-sec').val() * 1;
+  params.time_longBreak = $('#inputs_longBreak-min').val() * 60 + $('#inputs_longBreak-sec').val() * 1;
+}
+
 function timer(type, params) {
   seconds_passed++;
   console.log(longBreakVar);
@@ -44,19 +53,7 @@ function timer(type, params) {
     seconds_passed = 0;
     interval = 'longBreak'
     longBreakVar = 0;
-  } 
-  else  if (interval == 'longBreak') {
-    if (params.time_longBreak - seconds_passed > 0) {
-      renderDigits(params.time_longBreak - seconds_passed);
-    }
-    else {
-      longBreakVar++;
-      renderDigits(0);
-      $('#beeper')[0].play();
-      seconds_passed = 0;
-      interval = 'work';
-    }
-  }
+  }  
   else  if (interval == 'work') {
     if (params.time_work - seconds_passed > 0) {
       renderDigits(params.time_work - seconds_passed);
@@ -67,6 +64,18 @@ function timer(type, params) {
       $('#beeper')[0].play();
       seconds_passed = 0;
       interval = 'break';
+    }
+  }
+  else  if (interval == 'longBreak') {
+    if (params.time_longBreak - seconds_passed > 0) {
+      renderDigits(params.time_longBreak - seconds_passed);
+    }
+    else {
+      longBreakVar++;
+      renderDigits(0);
+      $('#beeper')[0].play();
+      seconds_passed = 0;
+      interval = 'work';
     }
   }
   else if (interval == 'break') {
@@ -82,13 +91,11 @@ function timer(type, params) {
   }
 }
 
-$('#ctrl').click(function () {
+$('#start-stop').click(function () {
   audio();
-  if ($('#ctrl').text() == 'START') {
-    let params = {};
-    params.time_work = $('#inputs_work-min').val() * 60 + $('#inputs_work-sec').val() * 1;
-    params.time_break = $('#inputs_break-min').val() * 60 + $('#inputs_break-sec').val() * 1;
-    params.time_longBreak = $('#inputs_longBreak-min').val() * 60 + $('#inputs_longBreak-sec').val() * 1;  
+
+  if ($('#start-stop').text() == 'START') {
+    setParams();
     
     if (interval == 'work') {
       timer_seconds = params.time_work;
@@ -99,12 +106,12 @@ $('#ctrl').click(function () {
     }
 
     intervalVar = setInterval(timer, 1000, 'interval', params);
-    $('#ctrl').text('PAUSE');
-    $('#reset').removeClass('hide');
+    $('#start-stop').text('PAUSE');
     return;
-  } else if ($('#ctrl').text() == 'PAUSE') {
+  } else if ($('#start-stop').text() == 'PAUSE') {
     clearInterval(intervalVar);
-    $('#ctrl').text('START');
+    $('#start-stop').text('START');
+    $('#reset').removeClass('hide');
     return;
   }  
 });
@@ -115,6 +122,49 @@ $('#reset').click(function () {
   seconds_passed = 0;
   longBreakVar = 0;
   renderDigits(0);
-  $('#ctrl').text('START');  
+  $('#start-stop').text('START');  
   $('#reset').addClass('hide');
-})
+});
+
+$('#interval-work').click(function() {
+  audio();
+  setParams()
+  clearInterval(intervalVar);
+  interval = 'work';  
+  seconds_passed = 0;
+  timer_seconds = params.time_work;
+  intervalVar = setInterval(timer, 1000, 'interval', params);
+  $('#start-stop').text('PAUSE');
+  $('#reset').removeClass('hide');
+  return;
+});
+
+$('#interval-break').click(function() {
+  audio();
+  setParams()
+  clearInterval(intervalVar);
+  interval = 'break';  
+  seconds_passed = 0;
+  timer_seconds = params.time_break;
+  intervalVar = setInterval(timer, 1000, 'interval', params);
+  $('#start-stop').text('PAUSE');
+  $('#reset').removeClass('hide');
+  return;
+});
+
+$('#interval-longBreak').click(function() {
+  audio();
+  setParams()
+  clearInterval(intervalVar);
+  interval = 'longBreak';  
+  seconds_passed = 0;
+  timer_seconds = params.time_longBreak;
+  intervalVar = setInterval(timer, 1000, 'interval', params);
+  $('#start-stop').text('PAUSE');
+  $('#reset').removeClass('hide');
+  return;
+});
+
+$('#inputs_volume').on("input", function() {
+  $('#beeper')[0].volume = this.value;
+});

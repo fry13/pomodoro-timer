@@ -8,37 +8,46 @@ html(lang="en")
     title Pomodoro
   body
     .content
-      .content__timer-container
-        span#digits-minutes.digits 00
-        span#digits-seconds.digits 00
-      .content__controls-container
-        button#ctrl.start-stop.control START
-        button#reset.control.hide 
-          img(src="./img/reset.svg", alt="")          
-      audio#beeper(src="" type="audio/mp3" preload="metadata") Ваш браузер не поддерживает встроенное аудио. Вы не услышите сигнал.        
+      .timer
+        span#digits-minutes.timer__digits 00
+        span#digits-seconds.timer__digits 00
+      .controls
+        table.controls__intervals-wrapper
+          tr
+            td
+              button#interval-work.controls__button.interval-button Work
+            td
+              button#interval-break.controls__button.interval-button Break
+            td
+              button#interval-longBreak.controls__button.interval-button Long break
+        .controls__main-buttons-wrapper
+          button#start-stop.controls__button START
+          button(title="Reset timer")#reset.controls__button.hide
+            img(src="./img/reset.svg", alt="Reset")
+      audio#beeper(src="" type="audio/mp3" preload="metadata") Your browser does not support embedded audio.        
     
     form#settings(name="settings")
       .settings__container
         span.settings__title Work
         label min
           input#inputs_work-min.input(type="number" value="25")
-        br
         label sec
           input#inputs_work-sec.input(type="number" value="0")
       .settings__container
-        span.settings__title Short break
+        span.settings__title Break
         label min
           input#inputs_break-min.input(type="number" value="5")
-        br
         label sec
           input#inputs_break-sec.input(type="number" value="0")
       .settings__container
         span.settings__title Long break
         label min
-          input#inputs_longBreak-min.input(type="number" value="5")
-        br
+          input#inputs_longBreak-min.input(type="number" value="5")        
         label sec
           input#inputs_longBreak-sec.input(type="number" value="0")
+      .settings__container
+        span.settings__title Volume
+        input#inputs_volume(type="range" min="0" max="1" step="0.05" value="0.5")
 
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js")
     script(src="./index.js") 
