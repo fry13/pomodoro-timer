@@ -107,11 +107,11 @@ $('#start-stop').click(function () {
 
     intervalVar = setInterval(timer, 1000, 'interval', params);
     $('#start-stop').text('PAUSE');
+    $('#reset').removeClass('hide');
     return;
   } else if ($('#start-stop').text() == 'PAUSE') {
     clearInterval(intervalVar);
     $('#start-stop').text('START');
-    $('#reset').removeClass('hide');
     return;
   }  
 });

@@ -11,7 +11,11 @@
   <body>
     <div class="content">
       <div class="timer"><span class="timer__digits" id="digits-minutes">00</span><span class="timer__digits" id="digits-seconds">00</span></div>
-      <div class="controls">
+      <div class="controls">       
+        <div class="controls__main-buttons-wrapper">
+          <button class="controls__button" id="start-stop">START</button>
+          <button class="controls__button hide" title="Reset timer" id="reset"><img src="./img/reset.svg" alt="Reset"></button>
+        </div>
         <table class="controls__intervals-wrapper">
           <tr>
             <td>
@@ -25,10 +29,6 @@
             </td>
           </tr>
         </table>
-        <div class="controls__main-buttons-wrapper">
-          <button class="controls__button" id="start-stop">START</button>
-          <button class="controls__button hide" title="Reset timer" id="reset"><img src="./img/reset.svg" alt="Reset"></button>
-        </div>
       </div>
       <audio id="beeper" src="" type="audio/mp3" preload="metadata">Your browser does not support embedded audio.        </audio>
     </div>

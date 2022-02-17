@@ -12,7 +12,11 @@ html(lang="en")
       .timer
         span#digits-minutes.timer__digits 00
         span#digits-seconds.timer__digits 00
-      .controls
+      .controls        
+        .controls__main-buttons-wrapper
+          button#start-stop.controls__button START
+          button(title="Reset timer")#reset.controls__button.hide
+            img(src="./img/reset.svg", alt="Reset")
         table.controls__intervals-wrapper
           tr
             td
@@ -21,10 +25,6 @@ html(lang="en")
               button#interval-break.controls__button.interval-button Break
             td
               button#interval-longBreak.controls__button.interval-button Long break
-        .controls__main-buttons-wrapper
-          button#start-stop.controls__button START
-          button(title="Reset timer")#reset.controls__button.hide
-            img(src="./img/reset.svg", alt="Reset")
       audio#beeper(src="" type="audio/mp3" preload="metadata") Your browser does not support embedded audio.        
     
     form#settings(name="settings")
