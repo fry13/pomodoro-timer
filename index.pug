@@ -16,7 +16,7 @@ html(lang="en")
         .controls__main-buttons-wrapper
           button#start-stop.controls__button START
           button(title="Reset timer")#reset.controls__button.hide
-            img(src="./img/reset.svg", alt="Reset")
+            img(src="./img/reset.svg", alt="Reset timer")
         table.controls__intervals-wrapper
           tr
             td
@@ -27,7 +27,10 @@ html(lang="en")
               button#interval-longBreak.controls__button.interval-button Long break
       audio#beeper(src="" type="audio/mp3" preload="metadata") Your browser does not support embedded audio.        
     
-    form#settings(name="settings")
+    button(title="Settings")#burger-menu
+      img(src="./img/menu.svg", alt="Reset timer")
+
+    form(name="settings")#settings.hide
       .settings__container
         span.settings__title Work
         label min
@@ -49,6 +52,7 @@ html(lang="en")
       .settings__container
         span.settings__title Volume
         input#inputs_volume(type="range" min="0" max="1" step="0.05" value="0.5")
+      button(type="reset")#settings__default Default settings
 
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js")
     script(src="./index.js") 

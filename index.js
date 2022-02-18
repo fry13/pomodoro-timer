@@ -168,3 +168,12 @@ $('#interval-longBreak').click(function() {
 $('#inputs_volume').on("input", function() {
   $('#beeper')[0].volume = this.value;
 });
+
+
+$('#burger-menu').click(function () {
+  if ( $('#settings').hasClass('hide') ) {
+    $('#settings').removeClass('hide')
+  } else {    
+    $('#settings').addClass('hide')
+  }
+});
