@@ -37,19 +37,19 @@ html(lang="en")
           label min
             input#inputs_work-min.input(type="number" value="25")
           label sec
-            input#inputs_work-sec.input(type="number" value="0")
+            input#inputs_work-sec.input(type="number" max="60" value="0")
         .settings__container
           span.settings__title Break
           label min
             input#inputs_break-min.input(type="number" value="5")
           label sec
-            input#inputs_break-sec.input(type="number" value="0")
+            input#inputs_break-sec.input(type="number" max="60" value="0")
         .settings__container
           span.settings__title Long break
           label min
-            input#inputs_longBreak-min.input(type="number" value="5")        
+            input#inputs_longBreak-min.input(type="number" value="15")        
           label sec
-            input#inputs_longBreak-sec.input(type="number" value="0")
+            input#inputs_longBreak-sec.input(type="number" max="60" value="0")
         .settings__container
           span.settings__title Volume
           input#inputs_volume(type="range" min="0" max="1" step="0.05" value="0.5")

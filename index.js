@@ -7,7 +7,35 @@ let seconds = 0;
 let timer_seconds = 0;
 let params = {};
 
-$('#beeper')[0].volume = 0.5;
+// function checkInput(inp) {
+//   /^(0|[1-9]\d*)$/.test(inp);
+// }
+
+function saveParams() {
+  setParams();  
+  params.volume = $('#inputs_volume').val();
+  localStorage.setItem("params", JSON.stringify(params));  
+}
+
+if (window.localStorage.getItem("params")) {
+  params = JSON.parse(window.localStorage.getItem("params"));
+  $('#inputs_work-min').val(parseInt(params.time_work / 60));
+  $('#inputs_work-sec').val(parseInt(params.time_work % 60));
+
+  $('#inputs_break-min').val(parseInt(params.time_break / 60));
+  $('#inputs_break-sec').val(parseInt(params.time_break % 60));
+
+  $('#inputs_longBreak-min').val(parseInt(params.time_longBreak / 60));
+  $('#inputs_longBreak-sec').val(parseInt(params.time_longBreak % 60));
+
+  $('#beeper')[0].volume = params.volume;
+  $('#inputs_volume').val(params.volume);  
+} else {    
+  $('#beeper')[0].volume = 0.5;
+  $('#inputs_volume').val(0.5);
+}
+
+
 
 function audio() {
   var audio = $('#beeper');
@@ -40,6 +68,8 @@ function setParams() {
   params.time_work = $('#inputs_work-min').val() * 60 + $('#inputs_work-sec').val() * 1;
   params.time_break = $('#inputs_break-min').val() * 60 + $('#inputs_break-sec').val() * 1;
   params.time_longBreak = $('#inputs_longBreak-min').val() * 60 + $('#inputs_longBreak-sec').val() * 1;
+  
+  console.log(params);
 }
 
 function timer(type, params) {
@@ -167,8 +197,16 @@ $('#interval-longBreak').click(function() {
 
 $('#inputs_volume').on("input", function() {
   $('#beeper')[0].volume = this.value;
+  saveParams();
 });
 
+$('.input').on("input", function() {
+    saveParams();
+});
+
+$('#settings__default').click(function() {
+  $('#beeper')[0].volume = 0.5;
+});
 
 $('#burger-menu').click(function () {
   if ( $('#settings').hasClass('hide') ) {
@@ -185,3 +223,4 @@ document.querySelector('.overlay').addEventListener('click', evt => {
     $('.overlay').addClass('hide');
   }    
 });
+
