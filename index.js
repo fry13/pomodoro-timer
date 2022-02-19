@@ -173,7 +173,15 @@ $('#inputs_volume').on("input", function() {
 $('#burger-menu').click(function () {
   if ( $('#settings').hasClass('hide') ) {
     $('#settings').removeClass('hide')
+    $('.overlay').removeClass('hide');
   } else {    
     $('#settings').addClass('hide')
   }
+});
+
+document.querySelector('.overlay').addEventListener('click', evt => {
+  if ( evt.target.classList.contains('overlay') ) {
+    $('#settings').addClass('hide');    
+    $('.overlay').addClass('hide');
+  }    
 });

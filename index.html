@@ -33,36 +33,38 @@
       <audio id="beeper" src="" type="audio/mp3" preload="metadata">Your browser does not support embedded audio.        </audio>
     </div>
     <button title="Settings" id="burger-menu"><img src="./img/menu.svg" alt="Reset timer"></button>
-    <form class="hide" name="settings" id="settings">
-      <div class="settings__container"><span class="settings__title">Work</span>
-        <label>min
-          <input class="input" id="inputs_work-min" type="number" value="25">
-        </label>
-        <label>sec
-          <input class="input" id="inputs_work-sec" type="number" value="0">
-        </label>
-      </div>
-      <div class="settings__container"><span class="settings__title">Break</span>
-        <label>min
-          <input class="input" id="inputs_break-min" type="number" value="5">
-        </label>
-        <label>sec
-          <input class="input" id="inputs_break-sec" type="number" value="0">
-        </label>
-      </div>
-      <div class="settings__container"><span class="settings__title">Long break</span>
-        <label>min
-          <input class="input" id="inputs_longBreak-min" type="number" value="5">
-        </label>
-        <label>sec
-          <input class="input" id="inputs_longBreak-sec" type="number" value="0">
-        </label>
-      </div>
-      <div class="settings__container"><span class="settings__title">Volume</span>
-        <input id="inputs_volume" type="range" min="0" max="1" step="0.05" value="0.5">
-      </div>
-      <button type="reset" id="settings__default">Default settings</button>
-    </form>
+    <div class="overlay hide">
+      <form class="hide" name="settings" id="settings">
+        <div class="settings__container"><span class="settings__title">Work</span>
+          <label>min
+            <input class="input" id="inputs_work-min" type="number" value="25">
+          </label>
+          <label>sec
+            <input class="input" id="inputs_work-sec" type="number" value="0">
+          </label>
+        </div>
+        <div class="settings__container"><span class="settings__title">Break</span>
+          <label>min
+            <input class="input" id="inputs_break-min" type="number" value="5">
+          </label>
+          <label>sec
+            <input class="input" id="inputs_break-sec" type="number" value="0">
+          </label>
+        </div>
+        <div class="settings__container"><span class="settings__title">Long break</span>
+          <label>min
+            <input class="input" id="inputs_longBreak-min" type="number" value="5">
+          </label>
+          <label>sec
+            <input class="input" id="inputs_longBreak-sec" type="number" value="0">
+          </label>
+        </div>
+        <div class="settings__container"><span class="settings__title">Volume</span>
+          <input id="inputs_volume" type="range" min="0" max="1" step="0.05" value="0.5">
+        </div>
+        <button type="reset" id="settings__default">Default settings</button>
+      </form>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="./index.js"> </script>
   </body>
