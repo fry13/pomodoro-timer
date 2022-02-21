@@ -7,9 +7,7 @@ let seconds = 0;
 let timer_seconds = 0;
 let params = {};
 
-// function checkInput(inp) {
-//   /^(0|[1-9]\d*)$/.test(inp);
-// }
+
 
 function saveParams() {
   setParams();  
@@ -68,15 +66,10 @@ function setParams() {
   params.time_work = $('#inputs_work-min').val() * 60 + $('#inputs_work-sec').val() * 1;
   params.time_break = $('#inputs_break-min').val() * 60 + $('#inputs_break-sec').val() * 1;
   params.time_longBreak = $('#inputs_longBreak-min').val() * 60 + $('#inputs_longBreak-sec').val() * 1;
-  
-  console.log(params);
 }
 
 function timer(type, params) {
   seconds_passed++;
-  console.log(longBreakVar);
-  console.log(interval)
-
   if (longBreakVar >= 4) {
     renderDigits(0);
     $('#beeper')[0].play();
@@ -201,6 +194,10 @@ $('#inputs_volume').on("input", function() {
 });
 
 $('.input').on("input", function() {
+    this.value = this.value.replace(/\D/g,"").substr(0,2);
+    if (this.value > 60) {
+      this.value = 60;
+    }
     saveParams();
 });
 
@@ -223,4 +220,6 @@ document.querySelector('.overlay').addEventListener('click', evt => {
     $('.overlay').addClass('hide');
   }    
 });
+
+
 
