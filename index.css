@@ -6,11 +6,11 @@
   --shadow: 3px 3px 0 rgba(0, 0 ,0, .3);
 }
 
-body {
+html {
   background-color: tomato;
   text-align: center;
   display: flex;
-  height: 100vh;
+  height: 100%;
   justify-content: center;
   flex-direction: column;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -103,8 +103,9 @@ body {
 
 .overlay {
   position: absolute;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  top: 0;
   background-color: var(--grey-color);
 }
 
@@ -171,6 +172,7 @@ body {
   -webkit-appearance: none;
   background-color: var(--grey-color);
   outline: none;
+  border-radius: 10px;
 }
 
 #inputs_volume:focus {
@@ -228,3 +230,52 @@ body {
   transition: 0.3s;
 }
 
+@media (max-width: 500px) {
+  .timer__digits {
+    font-size: 80pt;
+  }
+
+  .controls__intervals-wrapper {
+    width: 235px;
+  }
+
+  .interval-button {
+    font-size: 9pt;
+  }
+
+  .controls__main-buttons-wrapper {
+    margin: 20px 0 0 55px;
+    width: 235px;
+  }
+
+  #start-stop {
+    width: 180px;
+  }
+
+  #settings {
+    flex-direction: column;
+    width: 200px;
+  }
+
+  .settings__container {
+    margin: 0 5px 0 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* #inputs_volume {
+    transform: rotate(0);
+    margin: 10px 0;
+    width: 150px; 
+  }
+
+  #inputs_volume::-webkit-slider-thumb {
+    width: 16px;
+  }  */
+
+  .settings__container:last-of-type {
+    display: none;
+  }
+}
