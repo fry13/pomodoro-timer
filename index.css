@@ -7,7 +7,7 @@
 }
 
 html {
-  background-color: tomato;
+  background-image: radial-gradient(tomato 70%, rgb(228, 87, 62));
   text-align: center;
   display: flex;
   height: 100%;
