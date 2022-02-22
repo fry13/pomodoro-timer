@@ -201,6 +201,12 @@ $('.input').on("input", function() {
     saveParams();
 });
 
+$('.input').blur(function() {
+  if (this.value == '') {
+    this.value = 0;
+  }
+});
+
 $('#settings__default').click(function() {
   $('#beeper')[0].volume = 0.5;
 });
